@@ -15,6 +15,12 @@ const defaultExpenses = [
     amount: 100.0,
     date: new Date(2022, 5, 15),
   },
+  {
+    id: "e3",
+    title: "Spare Parts",
+    amount: 69.99,
+    date: new Date(2019, 5, 15),
+  },
 ];
 
 function App() {

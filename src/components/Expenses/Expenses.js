@@ -15,6 +15,20 @@ function Expenses({ expenses }) {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  let expensesRenderContent = <p>No expenses found for selected year.</p>;
+  if (filteredExpenses.length > 0) {
+    expensesRenderContent = filteredExpenses.map((expense) => {
+      return (
+        <ExpenseItem
+          key={expense.id}
+          expenseTitle={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      );
+    });
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -22,16 +36,7 @@ function Expenses({ expenses }) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpenses.map((expense) => {
-          return (
-            <ExpenseItem
-              key={expense.id}
-              expenseTitle={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          );
-        })}
+        {expensesRenderContent}
       </Card>
     </div>
   );
